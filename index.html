@@ -1,0 +1,115 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Lightbulb Toggle Assignment</title>  
+    <!-- <style>  
+        .container {  
+            text-align: center;  
+            margin: 50px auto;  
+            max-width: 600px;  
+        }  
+
+        .lightbulb-section {  
+            display: flex;  
+            justify-content: space-around;  
+            align-items: center;  
+        }  
+
+        .lightbulb-wrapper {  
+            text-align: center;  
+        }  
+
+        img {  
+            width: 200px;  
+            height: auto;  
+        }  
+
+        hr {  
+            margin: 40px 0;  
+        }  
+    </style>   -->
+</head>  
+<body>  
+
+    <div class="container">  
+        <h2>Lightbulb Toggle</h2>  
+
+        <div class="lightbulb-section">  
+    
+            <div class="lightbulb-wrapper">  
+                <img id="lightbulb1" src="bulb-off.png" width="200">  
+                <div>  
+                    <button onclick="turnOnLight('lightbulb1')">Turn on the light</button>  
+                    <button onclick="turnOffLight('lightbulb1')">Turn off the light</button>  
+                </div>  
+            </div>  
+        </div>  
+
+        <hr>  
+
+        <!-- Get Current Time Section -->  
+        <h2>Current Time</h2>  
+        <button onclick="displayCurrentTime()">Show Current Time</button>  
+        <p id="currentTimeDisplay"></p>  
+
+        <hr>  
+
+        <!-- Remove First and Last Character Section -->  
+        <h2>Remove First and Last Character from String</h2>  
+        <input type="text" id="inputString" placeholder="Enter a string">  
+        <button onclick="removeChars()">Remove Characters</button>  
+        <p id="modifiedStringDisplay"></p>  
+
+    </div>  
+
+    <script>  
+        // Lightbulb Toggle Functions  
+        function turnOnLight(bulbId) {  
+            document.getElementById(bulbId).src = 'bulb-on.png';  
+        }  
+
+        function turnOffLight(bulbId) {  
+            document.getElementById(bulbId).src = 'bulb-off.png';  
+        }  
+
+        // Get Current Time in H:M:S AM/PM Format  
+        function getCurrentTime() {  
+            let now = new Date();  
+            let hours = now.getHours();  
+            let minutes = now.getMinutes();  
+            let seconds = now.getSeconds();  
+           
+            let ampm = hours >= 12 ? 'PM' : 'AM';  
+            
+            hours = hours % 12;  
+            hours = hours ? hours : 12; // The hour '0' should be '12'  
+            minutes = minutes < 10 ? '0' + minutes : minutes;  
+            seconds = seconds < 10 ? '0' + seconds : seconds;  
+           
+            let currentTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;  
+            return currentTime;  
+        }  
+
+        // Display Current Time  
+        function displayCurrentTime() {  
+            let time = getCurrentTime();  
+            document.getElementById("currentTimeDisplay").textContent = time;  
+        }  
+
+        // Remove First and Last Character of a String  
+        function removeFirstAndLastChar(str) {  
+            return str.slice(1, -1);  
+        }  
+
+        // Display Modified String  
+        function removeChars() {  
+            let input = document.getElementById("inputString").value;  
+            let modifiedStr = removeFirstAndLastChar(input);  
+            document.getElementById("modifiedStringDisplay").textContent = modifiedStr;  
+        }  
+    </script>  
+
+</body>  
+</html>
